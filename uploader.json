@@ -52,7 +52,7 @@
       "Authorization": "${config.apiToken}",
       "authCode": "${config.authCode}",
       "Accept": "application/json",
-      "User-Agent": "Picora-CloudFlare-ImgBed/1.1.0"
+      "User-Agent": "Picora-CloudFlare-ImgBed/1.1.1"
     },
     "body": {
       "type": "multipart",

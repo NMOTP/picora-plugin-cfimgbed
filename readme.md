@@ -4,12 +4,6 @@
 
 **让 Picora 一键接入你自建的 CloudFlare ImgBed 图床**
 
-![作者 NMOTP](https://img.shields.io/badge/作者-NMOTP-8A2BE2?style=flat-square)
-![版本 1.1.0](https://img.shields.io/badge/版本-1.1.0-F6821F?style=flat-square)
-![协议 http-v2](https://img.shields.io/badge/协议-http--v2-F6821F?style=flat-square)
-![Picora 1.0.7+](https://img.shields.io/badge/Picora-%E2%89%A5%201.0.7-blue?style=flat-square)
-![许可 MIT](https://img.shields.io/badge/许可-MIT-green?style=flat-square)
-
 为 [Picora](https://github.com/Alnitak44/Picora) 桥接 [MarSeventh/CloudFlare-ImgBed](https://github.com/MarSeventh/CloudFlare-ImgBed) —— 无论是部署在 Cloudflare Pages / Workers 还是 Docker，只要图床在线，写作时就能随手传图、立刻拿到链接。
 
 ---
