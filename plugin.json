@@ -1,0 +1,15 @@
+{
+  "packageVersion": 1,
+  "runtime": "http-v2",
+  "entry": "uploader.json",
+  "id": "io.github.nmotp.picora.cfimgbed",
+  "name": "CloudFlare ImgBed",
+  "version": "1.1.0",
+  "description": "连接自建的 CloudFlare ImgBed 图床，支持 API Token 或上传密码（authCode）鉴权。",
+  "author": "NMOTP",
+  "homepage": "https://github.com/NMOTP/picora-plugin-cfimgbed",
+  "repository": "https://github.com/NMOTP/picora-plugin-cfimgbed",
+  "icon": "assets/icon.svg",
+  "mark": "CF",
+  "color": "#F6821F"
+}

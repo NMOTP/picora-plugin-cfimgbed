@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 2,
+  "requires": [
+    "response-conditions"
+  ],
+  "permissions": {
+    "network": [
+      "config.baseUrl"
+    ],
+    "readSelectedFile": true,
+    "allowInsecureHttp": true,
+    "deleteUploadedFile": false
+  },
+  "config": [
+    {
+      "key": "baseUrl",
+      "label": "图床地址",
+      "type": "text",
+      "role": "endpoint",
+      "required": true,
+      "hint": "例如 https://img.example.com，不要带 /upload"
+    },
+    {
+      "key": "apiToken",
+      "label": "API Token（推荐）",
+      "type": "secret",
+      "role": "token",
+      "hint": "后台 → 安全设置 → API Token 管理，创建时勾选「上传」权限；可留空改用上传密码"
+    },
+    {
+      "key": "authCode",
+      "label": "上传密码 authCode（可选）",
+      "type": "secret",
+      "role": "token",
+      "hint": "后台 → 安全设置 → 用户端认证的上传密码；未开启或已用 API Token 时留空"
+    },
+    {
+      "key": "folder",
+      "label": "上传目录（可选）",
+      "type": "text",
+      "hint": "例如 blog/2026，留空为根目录"
+    }
+  ],
+  "upload": {
+    "method": "POST",
+    "url": "${normalizeBaseUrl(config.baseUrl)}/upload",
+    "query": {
+      "returnFormat": "full",
+      "uploadFolder": "${config.folder}"
+    },
+    "headers": {
+      "Authorization": "${config.apiToken}",
+      "authCode": "${config.authCode}",
+      "Accept": "application/json",
+      "User-Agent": "Picora-CloudFlare-ImgBed/1.1.0"
+    },
+    "body": {
+      "type": "multipart",
+      "fileField": "file"
+    },
+    "response": {
+      "url": "[0].src",
+      "successStatuses": [
+        200
+      ],
+      "success": {
+        "path": "[0].src",
+        "exists": true
+      },
+      "errorMessage": "error",
+      "errorCode": "code"
+    },
+    "followRedirects": false,
+    "timeoutSeconds": 120,
+    "errors": {
+      "400": "上传参数被拒绝（HTTP 400），可能是文件格式不允许或文件无效。",
+      "401": "鉴权失败：请检查 API Token 是否有「上传」权限，或上传密码（authCode）是否正确。",
+      "403": "请求被拒绝（HTTP 403），可能是 IP 黑名单或站点安全策略。",
+      "404": "找不到 /upload 接口，请检查图床地址。",
+      "413": "图片超过站点或存储渠道的大小限制。",
+      "429": "请求过于频繁，请稍后重试。",
+      "500": "图床服务异常，请查看站点日志或存储渠道配置。",
+      "502": "图床网关异常，请稍后重试。",
+      "503": "图床暂时不可用，请稍后重试。",
+      "504": "图床响应超时，请稍后重试或换更小的图片。"
+    }
+  }
+}
