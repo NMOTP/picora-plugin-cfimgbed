@@ -124,7 +124,7 @@
 
 ---
 
-## 🛠️ 本地开发
+## 🛠️ 文件结构
 
 ```text
 .
@@ -132,18 +132,10 @@
 ├── uploader.json     # 程序入口：配置字段、权限、上传请求
 ├── readme.md         # 本文档（同时打进插件包）
 ├── LICENSE
-├── assets/icon.svg   # 图标
-├── tools/pack.ps1    # 打包脚本
-└── docs/开发说明.md   # 接口细节、设计取舍与发布流程
+└── assets/icon.svg   # 图标
 ```
 
-打包：
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\pack.ps1 -Force
-```
-
-输出 `releases/cfimgbed-<版本>.picora-plugin.zip` 并打印 SHA256。插件协议详见 [Picora 插件开发文档](https://github.com/Alnitak44/Picora/blob/main/docs/PLUGINS.md)。
+插件协议详见 [Picora 插件开发文档](https://github.com/Alnitak44/Picora/blob/main/docs/PLUGINS.md)。
 
 ---
 
